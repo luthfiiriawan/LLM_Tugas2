@@ -1,0 +1,11 @@
+# Tema UI chatbot: terang, netral (zinc) dengan aksen indigo; tanpa identitas institusi
+[theme]
+base = "light"
+primaryColor = "#4F46E5"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F4F5"
+textColor = "#18181B"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"

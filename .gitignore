@@ -1,0 +1,33 @@
+# ---- File model besar (GitHub menolak file > 100 MB) ----
+# Unduh/buat ulang sesuai README (bagian "File yang tidak ada di repo")
+*.gguf
+*.safetensors
+*.bin
+outputs/
+outputs_v2/
+
+# ---- Dokumen sumber berhak cipta pihak lain ----
+# Pedoman Akademik diunduh sendiri dari situs resmi kampus
+data/raw/*.pdf
+# Logo kampus hanya dipakai di sampul laporan, tidak disebar di repo
+docs/img/logo_*.png
+
+# ---- Python / lingkungan ----
+__pycache__/
+*.pyc
+venv/
+.venv/
+.ipynb_checkpoints/
+
+# ---- Editor, OS, dan konfigurasi lokal ----
+.claude/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+
+# Laporan dikumpulkan lewat LMS (memuat logo kampus di sampul), tidak disebar lewat repo
+docs/*.docx
+docs/*.pdf

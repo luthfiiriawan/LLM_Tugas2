@@ -1,0 +1,24 @@
+# Modelfile VERSI 2 dari hasil merge lokal (safetensors 16-bit, scripts/merge_lora_lokal.py).
+# Ollama mengkuantisasi sendiri ke Q8_0:
+#   ollama create chatbot-kampus-v2 -q q8_0 -f deploy/Modelfile.v2-safetensors
+
+FROM D:/llm-export/merged_v2
+
+# Chat template Qwen 2.5 (ChatML) - harus sama dengan format saat training
+TEMPLATE """{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}
+{{- range .Messages }}<|im_start|>{{ .Role }}
+{{ .Content }}<|im_end|>
+{{ end }}<|im_start|>assistant
+"""
+
+# HARUS sama persis dengan SYSTEM_PROMPT di scripts/config.py dan notebook
+SYSTEM """Kamu adalah asisten layanan informasi akademik Universitas Telkom. Jawab pertanyaan mahasiswa tentang peraturan dan regulasi akademik kampus dengan bahasa Indonesia yang sopan, singkat, dan jelas. Jika informasinya tidak ada dalam peraturan, katakan bahwa kamu tidak tahu dan sarankan menghubungi bagian akademik."""
+
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|im_start|>"
+# temperature 0 = deterministik: jawaban sama setiap ditanya (sama dengan setelan evaluasi)
+PARAMETER temperature 0
+PARAMETER top_p 0.9
+PARAMETER num_ctx 2048
